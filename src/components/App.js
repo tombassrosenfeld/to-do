@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from './Header'
-import Board from "./Board/Board.js"
+import Board from "./Board"
 
 import '../styles/index.scss';
 

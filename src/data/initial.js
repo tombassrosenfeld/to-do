@@ -2,8 +2,8 @@ const initial = {
 	initialTest: 1,
 	boards: [
 		{
-			title: "",
-			columns: [
+			title: "Test Board",
+			lists: [
 				{
 					title: "To Do",
 					cards: [{
