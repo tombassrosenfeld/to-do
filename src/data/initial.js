@@ -17,6 +17,18 @@ const initial = {
 				{
 					title: "In Progress",
 					cards: [{
+						title: "Basic Styling",
+						content: "Looking at basic layout",
+					}, {
+
+						title: "Make it all better",
+						content: "",
+
+					}],
+				},
+				{
+					title: "Done",
+					cards: [{
 						title: "Create Data Structure",
 						content: "A description of what needs to be done.",
 					}, {
@@ -25,7 +37,7 @@ const initial = {
 						content: "",
 
 					}],
-				}
+				},
 			],
 		},
 	],

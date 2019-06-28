@@ -6,10 +6,12 @@ import '../styles/index.scss';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App container">
       <Header/>
       
-      <Board />
+      <Board
+      	boardIndex = {1}
+       />
 
         
     </div>

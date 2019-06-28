@@ -1,5 +1,9 @@
 .list {
-	margin: 10px;
+	// margin: 10px;
 	border: 1px solid #666;
 	box-shadow: 0px 1px 3px #666;
+
+	&__heading {
+		padding: 0.5em;
+	}
 }

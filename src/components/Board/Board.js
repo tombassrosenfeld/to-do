@@ -1,4 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, } from 'react';
+
+import List from '../List';
+
 
 class Board extends Component {
 
@@ -6,7 +9,6 @@ class Board extends Component {
 		super(props)
 
 		this.state =  {
-			lists: this.props.lists,
 			boardTitle: this.props.boardTitle,
 			lists: this.props.lists,
 		}
@@ -22,27 +24,22 @@ class Board extends Component {
 	render() {
 		// console.log(boards);
 	    return (
-		    <div className="board">
+		    <div className="board container">
 
 		    	<h1>{ this.state.boardTitle }</h1>
+		    	
 
-		    	{
-		    		this.state.lists.map((list) => (
-			    		<div key={list.title}>
-			    			<h2>{list.title}</h2>
-			    			<div>
-			    				{
-			    					list.cards.map((card) => (
-			    						<h3>card.title</h3>
-			    						<p>card.content
-
-			    					))
-			    				}
-			    			</div>
-			    		</div>
-
-		    		))
-	    		}
+		    	<div className="board-list-container">
+		    		{
+						this.state.lists.map((list) => (
+				    		<List 
+				    			key={list.title}
+				    			title={list.title}
+				    			cards={list.cards}
+				    		/>
+						))
+					}
+		    	</div>
 		    	
 		    	
 		    </div>

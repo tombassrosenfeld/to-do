@@ -6,7 +6,7 @@ const mapStateToProps = ({ initialTest, boards }) => ({
 	initialTest,
 	boardTitle: boards[0].title,
 	lists: boards[0].lists,
-
+	
 });
 
 const mapDispatchToProps = dispatch => {
