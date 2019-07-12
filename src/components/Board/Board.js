@@ -9,10 +9,9 @@ class Board extends Component {
 		super(props)
 
 		this.state =  {
-			boardTitle: this.props.boardTitle,
-			lists: this.props.lists,
+			boardTitle: this.props.boards[this.props.boardIndex].title,
+			lists: this.props.boards[this.props.boardIndex].lists,
 		}
-		
 
 		// this.handleClick = this.handleClick.bind(this);
 	}
