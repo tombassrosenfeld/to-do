@@ -30,7 +30,7 @@ class Board extends Component {
 
 		    	<div className="board-list-container">
 		    		{
-						this.state.lists.map((list) => (
+						this.state.lists.map((list) => console.log("hello") || (
 				    		<List 
 				    			key={list.title}
 				    			title={list.title}
