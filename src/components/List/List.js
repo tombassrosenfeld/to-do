@@ -21,8 +21,8 @@ class List extends Component {
 		    	{
 		    		this.state.cards.map((card) => (
 		    			<Card
-		    				id={card.id}
-		    				// content={card.content}
+		    				id={card.title}
+		    				content={card.content}
 		    			/>
 		    		))
 		    	}
