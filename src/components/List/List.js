@@ -9,9 +9,7 @@ class List extends Component {
 		this.state = {
 			title: this.props.title,
 			cards: this.props.cards,
-
 		}
-
 	}
 
 	render() {
@@ -21,13 +19,11 @@ class List extends Component {
 		    	{
 		    		this.state.cards.map((card) => (
 		    			<Card
-		    				id={card.title}
+		    				title={card.title}
 		    				content={card.content}
 		    			/>
 		    		))
 		    	}
-
-		    	
 		    </div>
 	    );
 	}
