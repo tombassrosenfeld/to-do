@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { format } from 'util';
+import FieldEditor from '../FieldEditor';
 
 function Card(props) {
 
@@ -28,16 +29,8 @@ function Card(props) {
 
 	return (
 		<div className="card container">
-			{ !titleEdit ? 
-	
-			<h3 onClick={handleTitleClick} >{title}</h3> :
-
-			<form>	
-				<div>
-					<input ref={editRef} id="title" onBlur={handleTitleClick} onChange={handleTitleChange} type="text" value={title}/>
-					<label for="title" class="hidden">Update Title</label>
-				</div>
-			</form> } 
+			<FieldEditor
+				content={title}/>
 			<p>{ content }</p>
 		</div>
 	);
