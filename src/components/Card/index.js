@@ -30,8 +30,13 @@ function Card(props) {
 	return (
 		<div className="card container">
 			<FieldEditor
-				content={title}/>
-			<p>{ content }</p>
+				content={title}
+				element="h3"
+				fieldName="title"/>
+			<FieldEditor 
+				content={content}
+				fieldName="content"
+				element="p"/>
 		</div>
 	);
 }
