@@ -11,9 +11,7 @@ function FieldEditor(props) {
     let fieldName = props.fieldName ? props.fieldName : "content";
     let element = props.element ? props.element : "h1";
 
-    
     // ensures that the focus is on the input when it's rendered. 
-    
 	useEffect(() => {
 		if (contentEdit) {
 		  editRef.current.focus();
@@ -32,10 +30,7 @@ function FieldEditor(props) {
         e.preventDefault()
         e.target.blur();
     }
-
-    console.log(content);
     
-
 	return (
         <Fragment>
 			{ !contentEdit && content ? 
