@@ -2,8 +2,10 @@ import { connect } from 'react-redux';
 import Board from './Board';
 import { increment } from '../../data/actions';
 
-const mapStateToProps = ({ boards }) => ({
+const mapStateToProps = ({ boards, lists }) => ({
+	lists,
 	boards,
+
 	
 });
 

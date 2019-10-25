@@ -26,8 +26,8 @@ class App extends Component {
 					<Header/>
 
 					<Route exact path="/" component={ Home }/>
-					<Route path="/boards/:index" render={ ({ match }) => (
-						<Board boardIndex={ match.params.index } />
+					<Route path="/boards/:id" render={ ({ match }) => (
+						<Board boardID={ match.params.id } />
 					) } />
 				</Router>
 			</div>

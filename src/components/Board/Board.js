@@ -9,8 +9,9 @@ class Board extends Component {
 		super(props)
 
 		this.state =  {
-			boardTitle: this.props.boards[this.props.boardIndex].title,
-			lists: this.props.boards[this.props.boardIndex].lists,
+			board: this.props.boards.filter(board => board.id === this.props.boardID),
+			// boardTitle: this.state.board.title,
+			lists: this.props.lists.filter(list => list.board_id === this.props.boardID),
 		}
 
 		// this.handleClick = this.handleClick.bind(this);
@@ -21,8 +22,8 @@ class Board extends Component {
 	// }
 
 	render() {
-		// console.log(boards);
-	    return (
+		
+	    return ( console.log(this.state.lists) ||
 		    <div className="board container">
 
 		    	<h1>{ this.state.boardTitle }</h1>
@@ -34,7 +35,7 @@ class Board extends Component {
 				    		<List 
 				    			key={list.title}
 				    			title={list.title}
-				    			cards={list.cards}
+				    			// cards={list.cards}
 				    		/>
 						))
 					}
