@@ -1,31 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { format } from 'util';
+import React from 'react';
 import FieldEditor from '../FieldEditor';
 
-function Card(props) {
+function Card({id: cardID, title, content}) {
 
-	const [ title, setTitle ] = useState(props.title);
-	const [ titleEdit, setTitleEdit ] = useState(false);
 
-	const [ content, setContent ] = useState(props.content);
-	const [ contentEdit, setContentEdit ] = useState(false);
-
-	const editRef = useRef();
-
-	useEffect(() => {
-		if (titleEdit) {
-		  editRef.current.focus();
-		}
-	  }, [titleEdit]);
-
-	let handleTitleChange = (e) => setTitle(e.target.value);
-	let handleTitleClick = (e) => {
-		setTitleEdit(!titleEdit);
-		if (titleEdit) {
-			editRef.current.focus();
-		}
-	}
-
+	console.log(cardID);
+	
 
 	return (
 		<div className="card container">

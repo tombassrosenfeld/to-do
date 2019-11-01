@@ -1,17 +1,30 @@
-import { connect } from 'react-redux';
-import List from './List';
-// import { updateCard } from '../../data/actions';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
-const mapStateToProps = ({  }) => ({
+import Card from '../Card';
+
+
+const List = ({list}) => {
 	
-});
+	let { title, id: listID } = list;
 
-const mapDispatchToProps = dispatch => {
-	// return {
-	// 	handleCardUpdate: (data) => {
-	// 		dispatch(updateCard(data))
-	// 	},
-	// };
-};
+	let cards = useSelector(state => state.cards).filter(card => card.list_id === listID);
 
-export default connect(mapStateToProps, mapDispatchToProps)(List);
+	
+
+	return (
+		<div className="list container">
+			<h2 className="list__heading">{ title }</h2>
+			{
+				cards.map((card) => (
+					<Card
+						title={card.title}
+						content={card.content}
+						id={card.id}
+					/>
+				))
+			}
+		</div>
+	);
+}
+export default List;
