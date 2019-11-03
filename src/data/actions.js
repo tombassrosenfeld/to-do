@@ -1,5 +1,10 @@
-export const increment = () => {
+
+
+export const updateCard = ({ card_id, fieldName, content }) => {
 	return {
-		type: 'increment',
+		type: 'updateCard',
+		card_id,
+		fieldName,
+		content
 	}
 }

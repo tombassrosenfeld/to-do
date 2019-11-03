@@ -1,6 +1,6 @@
 .list {
 	margin-right: 1em;
-	height: auto;
+	height: max-content;
 	box-shadow: $listContainerBoxShadow;
 
 	&__heading {

@@ -15,6 +15,7 @@ function Board({ boardID }) {
 				{	
 					lists.map((list) => (
 						<List 
+							key={list.id}
 							list={list}
 						/>
 					))

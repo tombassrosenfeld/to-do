@@ -1,22 +1,26 @@
 import React from 'react';
 import FieldEditor from '../FieldEditor';
+import {updateCard} from '../../data/actions';
+import {useDispatch} from 'react-redux';
 
-function Card({id: cardID, title, content}) {
+function Card({card}) {
+	const {id: cardID, title, content} = card;
 
-
-	console.log(cardID);
-	
+	let update = (fieldName, content) => updateCard(cardID, fieldName, content);
 
 	return (
 		<div className="card container">
 			<FieldEditor
-				content={title}
+				content={ title }
 				element="h3"
-				fieldName="title"/>
+				fieldName="title"
+				update={ updateCard }/>
+
 			<FieldEditor 
-				content={content}
+				content={ content }
 				fieldName="content"
-				element="p"/>
+				element="p"
+				update={ update }/>
 		</div>
 	);
 }

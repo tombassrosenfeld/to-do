@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Home from './Home';
-import { updateBoard } from '../../data/actions';
+
 
 const mapStateToProps = ({ boards }) => ({
 	boards,
