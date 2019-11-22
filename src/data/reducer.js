@@ -19,6 +19,13 @@ const updateCard = (state, { cardID, listID, fieldName, content } ) => {
 			byID: {
 				...cards
 			}
+		},
+		lists: {
+			byID: {
+				[listID] : {
+					cards: [...state.lists.byID[listID].cards, cardID]
+				}
+			}
 		}
 	}
 }
