@@ -1,14 +1,31 @@
 
 
-// const updateCard = ({cards}, action) => {
-// let updatedCard = cards.filter(card => card.id === card_id)[0]
-// }
+const updateCard = (state, { cardID, listID, fieldName, content } ) => {
+	let cardContents = state.cards.byID[cardID];
+	
+	let cards = {
+		...state.cards.byID,
+		[cardID]: {
+			...cardContents,
+			[fieldName]: content
+		}
+	};
+	// console.log(cards);
+	// console.log(state);
+	
+	return {
+		...state,
+		cards: {
+			byID: {
+				...cards
+			}
+		}
+	}
+}
 
 const reducer = (state, action) => {
 	switch (action.type) {
-		case "updateCard" : console.log("well that worked");
-		;
-		break;
+		case "UPDATE_CARD" : return updateCard(state, action);
 		default: return state;
 	}
 };

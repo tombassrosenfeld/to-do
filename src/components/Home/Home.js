@@ -21,14 +21,14 @@ class Home extends Component {
 
 		    	<ul>
 			    	{
-			    		this.state.boards.map((board, i)=>(
+			    		this.state.boards.allIDs.map((boardID, i)=>(
 			    			<li 
-			    				key={ board.title }
+			    				key={ boardID }
 			    				class="board-nav-item"
 			    			>
 			    				<Link
-			    				to={`/boards/${board.id}`}
-			    				>{ board.title }</Link>
+			    				to={`/boards/${boardID}`}
+			    				>{ this.state.boards.byID[boardID].title }</Link>
 			    			</li>
 			    		))
 			    	}

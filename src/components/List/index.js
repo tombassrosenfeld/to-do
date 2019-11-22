@@ -2,27 +2,39 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Card from '../Card';
 
-
 const List = ({list}) => {
 	
 	let { title, id: listID } = list;
 
-	const [ cards, setCards ] = useState(useSelector(state => state.cards).filter(card => card.list_id === listID));
+	const [ cards, setCards ] = useState(useSelector(state => state.lists.byID[listID].cards));
 
-	let handleAddCard = () => setCards( cards => [ ...cards, { list_id: listID, title: "", content: "" } ] );
+	const [ allCards, setAllCards ] = useState(useSelector(state => state.cards.byID));
+
+	let handleAddCard = () => {
+		let tempID = new Date().getTime();
+		setCards( cards =>  cards = [ ...cards, tempID ] );
+		// console.log(cards);
+		
+		setAllCards( (allCards) => allCards = { 
+			...allCards, 
+			[tempID]: { 
+				id: tempID, 
+				title: "", 
+				content: ""
+			}
+		})
+		// console.log(allCards);
+	}
 
 	return (
-		console.log(cards) ||
-		
 		<div className="list container">
 			<h2 className="list__heading">{ title }</h2>
 			{
-				cards.map((card) => (
-					console.log(card) ||
-					
+				cards.map((cardID) => (
 					<Card
-						key={card.id}
-						card={ card }
+						key={cardID}
+						card={ allCards[cardID] }
+						listID = {listID}
 					/>
 				))
 			}

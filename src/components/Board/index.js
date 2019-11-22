@@ -4,19 +4,19 @@ import List from '../List';
 
 function Board({ boardID }) {
 
-	let { title } = useSelector(state => state.boards).filter(board => boardID === board.id)[0];
+	let {title, lists} = useSelector(state => state.boards.byID[boardID]);
 
-	let lists = useSelector(state => state.lists).filter( list => list.board_id === boardID );
+	let allLists = useSelector(state => state.lists.byID);
 
-	return (
+	return ( 
 		<div className="board container">
 			<h1>{ title }</h1>
 			<div className="board-list-container">
 				{	
-					lists.map((list) => (
+					lists.map((listID) => (
 						<List 
-							key={list.id}
-							list={list}
+							key={listID}
+							list={allLists[listID]}
 						/>
 					))
 				}

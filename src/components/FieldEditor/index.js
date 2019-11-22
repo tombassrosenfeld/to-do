@@ -23,7 +23,7 @@ function FieldEditor(props) {
     if (contentEdit) {
       editRef.current.focus();
     }
-    }, [contentEdit]);
+  }, [contentEdit]);
     
 	return (
     <Fragment>
