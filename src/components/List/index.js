@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Card from '../Card';
 
-const List = ({list}) => {
+const List = ({ list }) => {
+	
 	
 	let { title, id: listID } = list;
 
@@ -10,9 +11,12 @@ const List = ({list}) => {
 
 	const [ allCards, setAllCards ] = useState(useSelector(state => state.cards.byID));
 
+	console.log(listID);
+
+	// const dispatchAddCard = (tempID, listID) => dispatch({ type: "ADD_CARD", tempID, listID });
+
 	let handleAddCard = () => {
 		let tempID = new Date().getTime();
-		setCards( cards =>  cards = [ ...cards, tempID ] );
 		// console.log(cards);
 		
 		setAllCards( (allCards) => allCards = { 
@@ -23,7 +27,9 @@ const List = ({list}) => {
 				content: ""
 			}
 		})
-		// console.log(allCards);
+		setCards( cards =>  cards = [ ...cards, tempID ] );
+
+		// dispatchAddCard(tempID, listID);
 	}
 
 	return (
@@ -34,7 +40,7 @@ const List = ({list}) => {
 					<Card
 						key={cardID}
 						card={ allCards[cardID] }
-						listID = {listID}
+						listID = { listID }
 					/>
 				))
 			}

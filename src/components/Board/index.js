@@ -4,7 +4,7 @@ import List from '../List';
 
 function Board({ boardID }) {
 
-	let {title, lists} = useSelector(state => state.boards.byID[boardID]);
+	let { title, lists } = useSelector(state => state.boards.byID[boardID]);
 
 	let allLists = useSelector(state => state.lists.byID);
 
@@ -13,10 +13,10 @@ function Board({ boardID }) {
 			<h1>{ title }</h1>
 			<div className="board-list-container">
 				{	
-					lists.map((listID) => (
+					lists.map(listID => (
 						<List 
-							key={listID}
-							list={allLists[listID]}
+							key={ listID }
+							list={ allLists[listID] }
 						/>
 					))
 				}

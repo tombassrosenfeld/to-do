@@ -46,7 +46,8 @@ const initial = {
                 title: "Done",
                 cards: [11,12]
             }
-        }
+        },
+        allIDS: [1,2,3,4,5,6]
     },
 	cards: {
         byID: {
