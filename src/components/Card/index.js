@@ -1,10 +1,10 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, memo } from 'react';
 import FieldEditor from '../FieldEditor';
 import { useDispatch } from 'react-redux';
 import { cardUpdate } from '../../data/actions';
 
 
-function Card({ card, listID }) {
+const Card = memo(({ card, listID }) => {
 	const { id: cardID, title, content } = card;
 
 	const dispatch = useDispatch();
@@ -14,7 +14,7 @@ function Card({ card, listID }) {
 		[dispatch, cardID, listID]
 	);
 
-	return (
+	return console.log("updated") || (
 		<div className="card container">
 			<FieldEditor
 				content={ title }
@@ -29,6 +29,6 @@ function Card({ card, listID }) {
 				update={ dispatchCardUpdate }/>
 		</div>
 	);
-}
+});
 
 export default Card;

@@ -1,12 +1,12 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, shallowEqual } from 'react-redux';
 import List from '../List';
 
 function Board({ boardID }) {
 
 	let { title, lists } = useSelector(state => state.boards.byID[boardID]);
 
-	let allLists = useSelector(state => state.lists.byID);
+	let allLists = useSelector(state => state.lists.byID, shallowEqual);
 
 	return ( 
 		<div className="board container">
