@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 
 import '../../styles/index.scss';
+import Loading from '../Loading/Loading';
 
 
 class App extends Component {
@@ -24,11 +25,10 @@ class App extends Component {
 			<div className="App container">
 				<Router>
 					<Header/>
-
-					<Route exact path="/" component={ Home }/>
-					<Route path="/boards/:id" render={ ({ match }) => (
-						<Board boardID={ +match.params.id } />
-					) } />
+						<Route exact path="/" component={ Home }/>
+						<Route path="/boards/:id" render={ ({ match }) => (
+							<Board boardID={ +match.params.id } />
+						) } />
 				</Router>
 			</div>
 		);

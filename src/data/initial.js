@@ -1,4 +1,5 @@
 const initial = {
+    loaded: false,
 	boards: {
         byID: {
             1: {	

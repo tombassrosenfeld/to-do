@@ -1,7 +1,7 @@
 import React, { useState, memo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Card from '../Card';
-import { addCardToList } from '../../data/actions';
+import { addCardToList } from '../../data/actions/state';
 
 
 const List = memo(({ list }) => {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
+import Loading from '../Loading/Loading';
 
 class Home extends Component {
 
@@ -9,31 +10,37 @@ class Home extends Component {
 		this.state = {
 			boards: this.props.boards,
 		}
-
 	}
+
+	componentDidMount() {
+		console.log("mounted");
+		this.props.loadBoards();
+	};
 
 	render() {
 
 	    return (
-		    <div className="home container">
+			<Loading>
+				<div className="home container">
 
-		    	<h2>Boards</h2>
+					<h2>Boards</h2>
 
-		    	<ul>
-			    	{
-			    		this.state.boards.allIDs.map((boardID, i)=>(
-			    			<li 
-			    				key={ boardID }
-			    				class="board-nav-item"
-			    			>
-			    				<Link
-			    				to={`/boards/${boardID}`}
-			    				>{ this.state.boards.byID[boardID].title }</Link>
-			    			</li>
-			    		))
-			    	}
-		    	</ul>
-		    </div>
+					<ul>
+						{
+							this.state.boards.allIDs.map((boardID, i)=>(
+								<li 
+									key={ boardID }
+									class="board-nav-item"
+								>
+									<Link
+									to={`/boards/${boardID}`}
+									>{ this.state.boards.byID[boardID].title }</Link>
+								</li>
+							))
+						}
+					</ul>
+				</div>
+			</Loading>
 	    );
 	}
 }

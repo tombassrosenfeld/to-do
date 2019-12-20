@@ -1,7 +1,7 @@
 import React, { useCallback, memo } from 'react';
 import FieldEditor from '../FieldEditor';
 import { useDispatch } from 'react-redux';
-import { cardUpdate } from '../../data/actions';
+import { cardUpdate } from '../../data/actions/state';
 
 
 const Card = memo(({ card, listID }) => {
