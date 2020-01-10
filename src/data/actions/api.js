@@ -1,11 +1,11 @@
 import axios from '../axios';
+import { loadBoards } from "./state"
 
 
 export const getBoards = () => dispatch => {
-    console.log("dispatched");
     
     axios.get('boards/').then(({ data }) => {
         console.log(data.data);
-        // dispatch()
+        dispatch( loadBoards(data.data) );
     });
 }

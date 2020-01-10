@@ -13,7 +13,6 @@ class Home extends Component {
 	}
 
 	componentDidMount() {
-		console.log("mounted");
 		this.props.loadBoards();
 	};
 

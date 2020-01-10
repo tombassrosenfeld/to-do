@@ -10,7 +10,7 @@ const Card = memo(({ card, listID }) => {
 	const dispatch = useDispatch();
 
 	const dispatchCardUpdate = useCallback((fieldName, content) => 
-		dispatch( cardUpdate (cardID, fieldName, content) ),
+		dispatch( cardUpdate (cardID, fieldName, content, listID) ),
 		[dispatch, cardID, listID]
 	);
 

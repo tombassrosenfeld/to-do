@@ -8,7 +8,6 @@ import {
 } from "react-router-dom";
 
 import '../../styles/index.scss';
-import Loading from '../Loading/Loading';
 
 
 class App extends Component {

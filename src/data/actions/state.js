@@ -18,13 +18,12 @@ export const addCardToList = (cardID, listID, fieldName, content) => ({
 });
 
 export const loadBoards = ( data ) => {
-	let boards = (data) => {
-		
-	}
+	console.log("data");
+
 	return {
 		type: SET_BOARDS,
 		loaded: true,
-		boards: data 
+		boards: data, 
 	}
 
 };
