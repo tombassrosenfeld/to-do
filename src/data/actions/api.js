@@ -3,9 +3,9 @@ import { loadBoards } from "./state"
 
 
 export const getBoards = () => dispatch => {
+    console.log("called");
     
     axios.get('boards/').then(({ data }) => {
-        console.log(data.data);
         dispatch( loadBoards(data.data) );
     });
 }

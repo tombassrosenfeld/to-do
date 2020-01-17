@@ -3,9 +3,15 @@ import { useSelector, shallowEqual } from 'react-redux';
 import List from '../List';
 
 function Board({ boardID }) {
+	console.log(boardID);
 
+	let board = useSelector(state => state.boards.byID[boardID]);
+	console.log(board);
+	
+	
 	let { title, lists } = useSelector(state => state.boards.byID[boardID]);
-
+	console.log(title);
+	
 	let allLists = useSelector(state => state.lists.byID, shallowEqual);
 
 	return ( 

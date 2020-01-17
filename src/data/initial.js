@@ -1,19 +1,10 @@
 const initial = {
-    loaded: false,
+    loading: true,
 	boards: {
         byID: {
-            1: {	
-                id: 1,
-                title: "Test Board 1",
-                lists: [1,2,3]
-            },
-            2: {	
-                id: 2,
-                title: "Test Board 2",
-                lists: [4,5,6]
-            }
+
 		},
-		allIDs: [1,2]
+		allIDs: []
     },
 	lists: {
         byID: {
