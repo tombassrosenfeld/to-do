@@ -18,18 +18,19 @@ export const addCardToList = (cardID, listID, fieldName, content) => ({
 });
 
 export const loadBoards = ( data ) => {
+	console.log(data);
 	
+	let boardsOrder = [];
 	let boards = data.reduce((boardsObject, board) => {
 		boardsObject[board.id] = board;
+		boardsOrder.push(board.id);
 		return boardsObject;
-	}, {});
-
-	let allBoards = data.map(board => board.id)
+	}, {} );
 	
 	return {
 		type: SET_BOARDS,
 		loading: false,
 		boards, 
-		allBoards,
+		allBoards: boardsOrder,
 	}
 };
