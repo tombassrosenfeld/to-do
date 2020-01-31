@@ -1,5 +1,5 @@
 const initial = {
-    loading: true,
+    loading: false,
 	boards: {
         byID: {
 

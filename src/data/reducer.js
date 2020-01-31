@@ -57,6 +57,12 @@ const reducer = (state, action) => {
 		case "UPDATE_CARD" : return updateCardInState(state, action);
 		case "CREATE_NEW_CARD" : return addCardToList(updateCardInState(state, action), action);
 		case "SET_BOARDS" : return setLoaded(updateBoards(state, action));
+		case "LOAD_BOARD" : console.log("board loaded");
+							return state;
+		case "SET_LOADING" : console.log("loading");
+		
+		return { ...state, loading: true }
+		
 		default: return state;
 	}
 };
