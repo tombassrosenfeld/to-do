@@ -5,31 +5,30 @@ import Loading from '../Loading/Loading';
 import { getBoard } from '../../data/actions/api';
 
 function Board({ boardID }) {
+	const dispatch = useDispatch();
+	useEffect(() => dispatch(getBoard(boardID)), [dispatch, boardID]);
 
-	let board = useSelector(state => state.boards.byID[boardID]);
-	let dispatch = useDispatch();
-	useEffect(() => dispatch(getBoard(boardID)), [dispatch]);
-
-	// let { title, lists } = useSelector(state => state.boards.byID[boardID]);
-
+	const board = useSelector(state => state.boards.byID[boardID]);
+	const lists = board.lists_order ? board.lists_order : [];
 	
-	// let allLists = useSelector(state => state.lists.byID, shallowEqual);
+	let allLists = useSelector(state => state.lists.byID, shallowEqual);
 
 	return ( 
 		<div className="board container">
 			<h1>Board title</h1>
 			<Loading>
-				<p>Content</p>
-				{/* <div className="board-list-container">
+				<div className="board-list-container">
+					<h1>content</h1>
 					{	
 						lists.map(listID => (
+							allLists[listID] &&
 							<List 
 								key={ listID }
-								// list={ allLists[listID] }
+								list={ allLists[listID] }
 							/>
 						))
 					}
-				</div> */}
+				</div> 
 			</Loading>
 		</div>
 	)

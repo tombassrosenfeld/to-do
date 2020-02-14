@@ -37,7 +37,7 @@ const List = memo(({ list }) => {
 	return console.log("rendered list " + listID) || (
 		<div className="list container">
 			<h2 className="list__heading">{ title }</h2>
-			{
+			{	cards &&
 				cards.map((cardID) => (
 					<Card
 						key={cardID}

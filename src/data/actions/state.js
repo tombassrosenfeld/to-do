@@ -34,26 +34,39 @@ export const loadBoards = ( data ) => {
 	return {
 		type: SET_BOARDS,
 		loading: false,
-		boards, 
+		boards,
 		allBoards: boardsOrder,
 	}
 };
 
 export const loadBoard = (data) => {
-	console.log(data);
-	let { id, title, description, order, lists_order } = data;
+	const { id, title, description, order, lists_order } = data;
 	let cards = {};
-	const lists = data.lists.reduce((listsObject, list) => {
+	let lists = {};
 
-		listsObject[list.id] = {
+	data.lists.forEach(list => {
+		lists[list.id] = {
 			id: list.id,
-
+			title: list.title,
+			description: list.description,
+			order: list.order,
+			cards: list.cards_order,
 		}
-	}, {} );
+		list.tasks.forEach(task => {
+			cards[task.id] = {
+				id: task.id,
+				title: task.title,
+				description: task.description,
+				order: task.order,
+			}
+		})
+	});
+	
 	return {
+		type: LOAD_BOARD,
 
 		board: {
-			id: {
+			[id]: {
 				id,
 				title,
 				description,
@@ -63,12 +76,11 @@ export const loadBoard = (data) => {
 		},
 
 		lists: {
-
+			...lists,
 		},
 
-
-		type: LOAD_BOARD,
-		
+		cards: {
+			...cards,
+		},
 	}
-
 };

@@ -35,9 +35,7 @@ const addCardToList = (state, { cardID, listID}) => {
 	}
 };
 
-let updateBoards = (state, {boards, allBoards}) => {
-	console.log(allBoards);
-	
+const updateBoards = (state, {boards, allBoards}) => {
 	return {
 		...state,
 		boards: {
@@ -50,18 +48,44 @@ let updateBoards = (state, {boards, allBoards}) => {
 	}
 }
 
-let setLoaded = (state) => ({ ...state, loading: false });
+const setBoardContent = (state, action) => {
+	console.log(action);
+	
+	return {
+		...state,
+		boards: {
+			...state.boards,
+			byID : {
+				...state.boards.byID,
+				...action.board,
+			}
+		},
+		lists: {
+			...state.lists,
+			byID: {
+				...state.lists.byID,
+				...action.lists,
+			}
+		},
+		cards: {
+			...state.cards,
+			byID: {
+				...state.cards.byID,
+				...action.cards,
+			}
+		}
+	}
+}
+
+const setLoaded = (state) => ({ ...state, loading: false });
 
 const reducer = (state, action) => {
 	switch (action.type) {
 		case "UPDATE_CARD" : return updateCardInState(state, action);
 		case "CREATE_NEW_CARD" : return addCardToList(updateCardInState(state, action), action);
 		case "SET_BOARDS" : return setLoaded(updateBoards(state, action));
-		case "LOAD_BOARD" : console.log("board loaded");
-							return state;
-		case "SET_LOADING" : console.log("loading");
-		
-		return { ...state, loading: true }
+		case "LOAD_BOARD" : return setLoaded(setBoardContent(state, action));
+		case "SET_LOADING" : return { ...state, loading: true };
 		
 		default: return state;
 	}
