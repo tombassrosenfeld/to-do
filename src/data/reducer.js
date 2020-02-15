@@ -16,7 +16,7 @@ const updateCardInState = (state, { cardID, fieldName, content } ) => {
 	}
 };
 
-const addCardToList = (state, { cardID, listID}) => {
+const addCardToList = (state, { cardID, listID, cards}) => {
 	return {
 		...state,
 		lists: {
@@ -25,9 +25,8 @@ const addCardToList = (state, { cardID, listID}) => {
 				...state.lists.byID,
 				[listID]: {
 					...state.lists.byID[listID],
-					cards: [
-						...state.lists.byID[listID].cards,
-						cardID
+					cards_order: [
+						...cards
 					]
 				}
 			}
@@ -49,8 +48,6 @@ const updateBoards = (state, {boards, allBoards}) => {
 }
 
 const setBoardContent = (state, action) => {
-	console.log(action);
-	
 	return {
 		...state,
 		boards: {

@@ -9,24 +9,23 @@ const List = memo(({ list }) => {
 	
 	let { title, id: listID } = list;
 
-	const [ cards, setCards ] = useState(useSelector(state => state.lists.byID[listID].cards));
+	const [ cards, setCards ] = useState(useSelector(state => state.lists.byID[listID].cards_order));
 
 	const [ allCards, setAllCards ] = useState(useSelector(state => state.cards.byID));
 
 	const dispatch = useDispatch();
 
-	const dispatchAddCard = (tempID, listID) => dispatch( addCardToList(tempID, listID), [dispatch] );
+	const dispatchAddCard = (tempID, listID) => dispatch( addCardToList(tempID, listID, cards), [dispatch] );
 
 	let handleAddCard = () => {
 		let tempID = new Date().getTime();
-		// console.log(cards);
 		
 		setAllCards( (allCards) => allCards = { 
 			...allCards, 
 			[tempID]: { 
 				id: tempID, 
 				title: "", 
-				content: ""
+				content: "",
 			}
 		})
 		setCards( cards =>  cards = [ ...cards, tempID ] );
@@ -34,19 +33,19 @@ const List = memo(({ list }) => {
 		dispatchAddCard(tempID, listID);
 	}
 
-	return console.log("rendered list " + listID) || (
+	return (
 		<div className="list container">
 			<h2 className="list__heading">{ title }</h2>
 			{	cards &&
 				cards.map((cardID) => (
 					<Card
-						key={cardID}
+						key={ cardID }
 						card={ allCards[cardID] }
 						listID = { listID }
 					/>
 				))
 			}
-			<button onClick={handleAddCard}>Add card</button>
+			<button onClick={ handleAddCard }>Add card</button>
 		</div>
 	);
 })

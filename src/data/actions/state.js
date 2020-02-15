@@ -11,15 +11,14 @@ export const cardUpdate = (cardID, fieldName, content) => ({
 	type: UPDATE_CARD, 
 	cardID, 
 	fieldName, 
-	content
+	content,
 });
 
-export const addCardToList = (cardID, listID, fieldName, content) => ({
+export const addCardToList = (cardID, listID, cards) => ({
 	type: CREATE_NEW_CARD, 
 	cardID, 
 	listID, 
-	fieldName, 
-	content 
+	cards,
 });
 
 export const loadBoards = ( data ) => {
@@ -40,6 +39,8 @@ export const loadBoards = ( data ) => {
 };
 
 export const loadBoard = (data) => {
+	console.log(data);
+	
 	const { id, title, description, order, lists_order } = data;
 	let cards = {};
 	let lists = {};
@@ -50,8 +51,9 @@ export const loadBoard = (data) => {
 			title: list.title,
 			description: list.description,
 			order: list.order,
-			cards: list.cards_order,
+			cards_order: list.tasks_order,
 		}
+
 		list.tasks.forEach(task => {
 			cards[task.id] = {
 				id: task.id,
@@ -71,7 +73,7 @@ export const loadBoard = (data) => {
 				title,
 				description,
 				order,
-				lists: lists_order,
+				lists_order,
 			}
 		},
 

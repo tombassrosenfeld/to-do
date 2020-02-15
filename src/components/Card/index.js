@@ -1,7 +1,8 @@
 import React, { useCallback, memo } from 'react';
 import FieldEditor from '../FieldEditor';
 import { useDispatch } from 'react-redux';
-import { cardUpdate } from '../../data/actions/state';
+// import { cardUpdate } from '../../data/actions/state';
+import { postCard } from '../../data/actions/api';
 
 
 const Card = memo(({ card, listID }) => {
@@ -10,7 +11,7 @@ const Card = memo(({ card, listID }) => {
 	const dispatch = useDispatch();
 
 	const dispatchCardUpdate = useCallback((fieldName, content) => 
-		dispatch( cardUpdate (cardID, fieldName, content, listID) ),
+		dispatch( postCard(cardID, fieldName, content, listID) ),
 		[dispatch, cardID, listID]
 	);
 
