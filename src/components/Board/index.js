@@ -9,7 +9,7 @@ function Board({ boardID }) {
 	useEffect(() => dispatch(getBoard(boardID)), [dispatch, boardID]);
 
 	const board = useSelector(state => state.boards.byID[boardID]);
-	const lists = board.lists_order ? board.lists_order : [];
+	const lists = board ? (board.lists_order ? board.lists_order : []) : [];
 	
 	let allLists = useSelector(state => state.lists.byID, shallowEqual);
 
@@ -18,7 +18,6 @@ function Board({ boardID }) {
 			<h1>Board title</h1>
 			<Loading>
 				<div className="board-list-container">
-					<h1>content</h1>
 					{	
 						lists.map(listID => (
 							allLists[listID] &&
