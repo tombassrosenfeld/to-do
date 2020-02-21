@@ -16,11 +16,10 @@ export const getBoard = (boardID) => dispatch => {
     });
 }
 
-// need to create new card in API with placeholder values for title and description
-export const postCard = ( cardID, order, fieldName, content) => dispatch => {
+export const postCard = ( cardID, order, title) => dispatch => {
     axios.post("tasks/", {
-        id: cardID,
-        [fieldName]: content, 
+        temp_id: cardID,
+        title, 
         order,
     }).then(({data}) => {
         dispatch( cardUpdate(data.data) );
