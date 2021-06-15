@@ -50,7 +50,7 @@ function FieldEditor(props) {
         React.createElement( element, { onClick: handleContentClick }, fieldContent ) :
         // if content is being edited, display input element
         <form className="field-editor" onSubmit={ handleSubmit}>	
-            <input data-element={ element } ref={ editRef } id={ fieldName } onBlur={ handleBlur } onFocus={ !contentEdit ? handleContentClick : null } onChange={ (e) => dispatch({ type: "updateFieldContent", fieldContent: e.currentTarget.value }) } type="text" value={ fieldContent }/>
+            <input data-element={ element } ref={ editRef } className={ fieldName } onBlur={ handleBlur } onFocus={ !contentEdit ? handleContentClick : null } onChange={ (e) => dispatch({ type: "updateFieldContent", fieldContent: e.currentTarget.value }) } type="text" value={ fieldContent }/>
             <label htmlFor={ fieldName } className="hidden">Update { fieldName }</label>
         </form> 
       } 
