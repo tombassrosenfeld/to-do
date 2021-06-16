@@ -28,7 +28,7 @@ const AddItem = ( { onSubmit, label } ) => {
     }, [addCard]);
 
     return (
-        <div className="add-card">
+        <div className="add-item">
         {
             addCard && 
             <form
@@ -39,6 +39,7 @@ const AddItem = ( { onSubmit, label } ) => {
                     onChange={ (e) => handleChange(e) } 
                     ref={ titleFieldRef }/>
                 <input 
+                    className="add-item__button"
                     value={ label }
                     type="submit"
                     />
@@ -46,7 +47,7 @@ const AddItem = ( { onSubmit, label } ) => {
         }
         {
             !addCard &&
-            <button onClick={ clickHandler }>+</button>
+            <button className="add-item__button" onClick={ clickHandler }>+</button>
         }
         </div>
     )
