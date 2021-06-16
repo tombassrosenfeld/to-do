@@ -16,6 +16,9 @@ const updateCardInState = (state, { cardID, fieldName, content } ) => {
 	}
 };
 
+
+// keeping for potential use in cases where api is unreachable
+
 const addCardToList = (state, { cardID, listID, cards}) => {
 	return {
 		...state,
@@ -79,11 +82,13 @@ const setLoaded = (state) => ({ ...state, loading: false });
 const reducer = (state, action) => {
 	switch (action.type) {
 		case "UPDATE_CARD" : return updateCardInState(state, action);
-		case "CREATE_NEW_CARD" : return addCardToList(updateCardInState(state, action), action);
 		case "SET_BOARDS" : return setLoaded(updateBoards(state, action));
 		case "LOAD_BOARD" : return setLoaded(setBoardContent(state, action));
 		case "SET_LOADING" : return { ...state, loading: true };
 		
+		// keeping for potential use in cases where api is unreachable
+		case "CREATE_NEW_CARD" : return addCardToList(updateCardInState(state, action), action);
+
 		default: return state;
 	}
 };
