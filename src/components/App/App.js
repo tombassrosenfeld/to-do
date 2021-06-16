@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import Header from '../Header'
 import Board from "../Board"
-import Home from "../Home"
+import Home from "../Home/Home"
+import { useDispatch } from 'react-redux';
+import { getBoards } from '../../data/actions/api';
 import {
   BrowserRouter as Router,
   Route,
@@ -9,30 +11,21 @@ import {
 
 import '../../styles/index.scss';
 
+const App = () => {
+	const dispatch = useDispatch();
+	useEffect(() => dispatch(getBoards()), [dispatch]);
 
-class App extends Component {
-
-	constructor(props){
-		super(props)
-		this.state = {
-			boards: this.props.boards,
-		}
-	}
-
-	render() {
-		return (
-			<div className="App container">
-				<Router>
-					<Header/>
-
+	return (
+		<div className="App container">
+			<Router>
+				<Header/>
 					<Route exact path="/" component={ Home }/>
-					<Route path="/boards/:index" render={ ({ match }) => (
-						<Board boardIndex={ match.params.index } />
+					<Route path="/boards/:id" render={ ({ match }) => (
+						<Board boardID={ +match.params.id } />
 					) } />
-				</Router>
-			</div>
-		);
-	}
+			</Router>
+		</div>
+	);
 }
 
 export default App;
