@@ -39,8 +39,6 @@ export const loadBoards = ( data ) => {
 };
 
 export const loadBoard = (data) => {
-	console.log(data);
-	
 	const { id, title, description, order, lists_order } = data;
 	let cards = {};
 	let lists = {};
