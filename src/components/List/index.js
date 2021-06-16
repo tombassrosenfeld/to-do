@@ -1,8 +1,7 @@
 import React, { useState, useCallback, memo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Card from '../Card';
-import { addCardToList } from '../../data/actions/state';
-import AddItem from '../AddItem/AddItem';
+import AddItem from '../AddItem';
 import { postCard } from '../../data/actions/api';
 
 
@@ -10,34 +9,33 @@ const List = memo(({ list }) => {
 	
 	let { title, id: listID } = list;
 
-	const [addCard, setAddCard] = useState(false);
-
 	const [ cards, setCards ] = useState(useSelector(state => state.lists.byID[listID].cards_order));
 
 	const [ allCards, setAllCards ] = useState(useSelector(state => state.cards.byID));
 
 	const dispatch = useDispatch();
 
-	const dispatchAddCard = (tempID, order, listID) => dispatch( postCard(tempID, listID, cards), [dispatch] );
+	const dispatchAddCard = (data) => dispatch( postCard(data), [dispatch] );
 
 	let handleAddCard = useCallback((title) => {
+		
 		if ( title ) {
-			let tempID = new Date().getTime();
-			let order = cards.length
+			let temp_id = new Date().getTime();
+			let order = cards.length + 1;
 			
 			setAllCards( (allCards) => allCards = { 
 				...allCards, 
-				[tempID]: { 
-					id: tempID, 
+				[temp_id]: { 
+					id: temp_id, 
 					title, 
 					order,
 				}
 			})
-			setCards( cards =>  cards = [ ...cards, tempID ] );
-	
-			dispatchAddCard(tempID, order, listID);
+			setCards( cards =>  cards = [ ...cards, temp_id ] );
+
+			dispatchAddCard({ title, order, listID });
 		}
-	})
+	}, [listID, cards, dispatch]);
 
 	return (
 		<div className="list container">
@@ -52,7 +50,8 @@ const List = memo(({ list }) => {
 				))
 			}
 			<AddItem
-				onSubmit={ handleAddCard }/>
+				onSubmit={ handleAddCard }
+				label="Add Card" />
 		</div>
 	);
 })
