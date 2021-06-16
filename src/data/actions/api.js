@@ -16,12 +16,12 @@ export const getBoard = (boardID) => dispatch => {
     });
 }
 
-export const postCard = ( cardID, order, title) => dispatch => {
+export const postCard = ({ order, title, listID }) => dispatch => {
     axios.post("tasks/", {
-        temp_id: cardID,
         title, 
         order,
+        task_list_id: listID,
     }).then(({data}) => {
         dispatch( cardUpdate(data.data) );
-    });
+    }).catch(error => console.log(error));
 }
