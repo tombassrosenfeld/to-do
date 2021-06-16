@@ -1,0 +1,20 @@
+.field-editor {
+    input {
+        max-width: 100%;
+        min-width: 100%;
+
+
+        &[data-element="h1"] {
+            @extend h1;
+        }
+        &[data-element="h2"] {
+            @extend h2;
+        }
+        &[data-element="h3"] {
+            @extend h3;
+        }
+        &[data-element="p"] {
+            @extend p;
+        }
+    }
+}

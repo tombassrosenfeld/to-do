@@ -1,7 +1,9 @@
 .card {
-	border: 1px solid #ddd;
+	border: $itemBorder;
 	margin-top: 0.5rem;
-	// margin-right: 1em;
+	min-width: 250px;
 
-	width: 250px;
+	h3 {
+		margin-bottom: 0.5em;
+	}
 }

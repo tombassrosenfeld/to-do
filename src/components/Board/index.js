@@ -1,18 +1,36 @@
-import { connect } from 'react-redux';
-import Board from './Board';
-import { increment } from '../../data/actions';
+import React, { useEffect } from 'react';
+import { useSelector, shallowEqual, useDispatch } from 'react-redux';
+import List from '../List';
+import Loading from '../Loading/Loading';
+import { getBoard } from '../../data/actions/api';
 
-const mapStateToProps = ({ boards }) => ({
-	boards,
+function Board({ boardID }) {
+	const dispatch = useDispatch();
+	useEffect(() => dispatch(getBoard(boardID)), [dispatch, boardID]);
+
+	const board = useSelector(state => state.boards.byID[boardID]);
+	const lists = board ? (board.lists_order ? board.lists_order : []) : [];
 	
-});
+	let allLists = useSelector(state => state.lists.byID, shallowEqual);
 
-const mapDispatchToProps = dispatch => {
-	return {
-		handleIncrement: () => {
-			dispatch(increment())
-		},
-	};
-};
+	return ( 
+		<div className="board container">
+			<h1>Board title</h1>
+			<Loading>
+				<div className="board-list-container">
+					{	
+						lists.map(listID => (
+							allLists[listID] &&
+							<List 
+								key={ listID }
+								list={ allLists[listID] }
+							/>
+						))
+					}
+				</div> 
+			</Loading>
+		</div>
+	)
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Board);
+export default Board;

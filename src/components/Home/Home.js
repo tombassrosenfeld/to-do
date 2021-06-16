@@ -1,42 +1,33 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
+import Loading from '../Loading/Loading';
 
-class Home extends Component {
+const Home = () => {
 
-	constructor(props){
-		super(props)
+	let boards = useSelector(state => state.boards);
 
-		this.state = {
-			boards: this.props.boards,
-		}
-
-	}
-
-	render() {
-
-	    return (
-		    <div className="home">
-
-		    	<h2>Boards</h2>
-
-		    	<ul>
-			    	{
-			    		this.state.boards.map((board, i)=>(
-
-			    			<li 
-			    				key={ board.title }
-			    				class="board-nav-item"
-			    			>
-			    				<Link
-			    				to={`/boards/${i}`}
-			    				>{ board.title }</Link>
-			    			</li>
-			    		))
-			    	}
-		    	</ul>
-		    </div>
-	    );
-	}
+	return (
+		<div className="home container">
+			<h2>Boards</h2>
+			<Loading>
+				<ul>
+					{
+						boards.allIDs.map((boardID, i)=>(
+							<li 
+								key={ boardID }
+								className="board-nav-item"
+							>
+								<Link
+								to={`/boards/${boardID}`}
+								>{ boards.byID[boardID].title }</Link>
+							</li>
+						))
+					}
+				</ul>
+			</Loading>
+		</div>
+	);
 }
 
 export default Home;

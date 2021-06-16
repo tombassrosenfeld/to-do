@@ -1,17 +1,35 @@
-import { connect } from 'react-redux';
-import Card from './Card';
-import { updateCard } from '../../data/actions';
+import React, { useCallback, memo } from 'react';
+import FieldEditor from '../FieldEditor';
+import { useDispatch } from 'react-redux';
+// import { cardUpdate } from '../../data/actions/state';
+import { postCard } from '../../data/actions/api';
 
-const mapStateToProps = ({ boards }) => ({
-	boards,
+
+const Card = memo(({ card, listID }) => {
+	const { id: cardID, title, content } = card;
+
+	const dispatch = useDispatch();
+
+	const dispatchCardUpdate = useCallback((fieldName, content) => 
+		dispatch( postCard(cardID, fieldName, content, listID) ),
+		[dispatch, cardID, listID]
+	);
+
+	return console.log("updated") || (
+		<div className="card container">
+			<FieldEditor
+				content={ title }
+				element="h3"
+				fieldName="title"
+				update={ dispatchCardUpdate }/>
+
+			<FieldEditor 
+				content={ content }
+				fieldName="content"
+				element="p"
+				update={ dispatchCardUpdate }/>
+		</div>
+	);
 });
 
-const mapDispatchToProps = dispatch => {
-	// return {
-	// 	: (data) => {
-	// 		dispatch(updateCard(data))
-	// 	},
-	// };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Card);
+export default Card;

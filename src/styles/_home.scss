@@ -1,3 +1,10 @@
 .home {
-	
+	.board-nav-item a {
+		display: block;
+		text-align: center;
+		border: $itemBorder;
+		padding: 0.5em;
+		margin: 0.5em;
+		width: 10em;
+	}
 }
