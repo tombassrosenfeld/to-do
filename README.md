@@ -1,3 +1,23 @@
+# To Do List
+
+## About
+
+This project has functioned as my playground for React. I wanted to practice putting together a basic app and soon realised that to do so with any real meaning, I needed an API. So I built a basic Laravel API (see it [here](https://github.com/tombassrosenfeld/to-do-api)) for my to do list app and then linked them up. 
+
+I also started writing this app using connected and class based components before deciding to refactor and use hooks. There's still a few bits of legacy code that I should really tidy up but haven't gotten around to yet. 
+
+There are lots of small ui touches to add. Using the escape key to exit the add card input and updating the field editor component to trigger a patch request on submit. 
+
+The list of major updates is endless and I will keep tackling those as and when I have time. Drag and drop or some other method of order change is up there. The ability to add new lists. 
+
+
+Feel free to have a dig about and let me know how I can improve my code. 
+
+---
+
+*The React readme for getting up and running is below:*
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
