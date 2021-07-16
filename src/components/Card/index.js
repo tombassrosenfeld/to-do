@@ -11,12 +11,11 @@ const Card = memo(({ card, listID }) => {
 	const dispatch = useDispatch();
 	
 	const handleCardUpdate = useCallback((content, fieldName) => {
-
 		card[fieldName] = content;
-		console.log(card[fieldName]);
+
 		const dispatchUpdateCard = () => {
 			const data = {...card, listID };
-			console.log(data);
+			
 			dispatch( putCard(data), [card, listID])
 		};
 		dispatchUpdateCard();

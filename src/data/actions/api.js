@@ -28,7 +28,6 @@ export const postCard = ({ order, title, listID }) => dispatch => {
 }
 
 export const putCard = ({id, description, title, order, listID: task_list_id}) => dispatch => {
-    
     axios.put(`tasks/${id}`,{
         description,
         title, 
