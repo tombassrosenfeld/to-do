@@ -15,6 +15,9 @@ function FieldEditor(props) {
 
   let { fieldName, element, update, content } = props;
 
+  // check that content is 
+  content = typeof content === 'string' ? content : "";
+
   const initialState = { contentEdit : false, fieldContent: content };
   const [state, dispatch] = useReducer(reducer, initialState);
   
@@ -26,14 +29,18 @@ function FieldEditor(props) {
 
   let handleBlur = () => {
     handleContentClick();
-    update(fieldName, fieldContent);
+    updateFieldValue()
   };
 
   let handleSubmit = (e) => {
     e.preventDefault();
     handleContentClick();
-    update(fieldName, fieldContent);
+    updateFieldValue();
   };
+
+  const updateFieldValue = () => {
+    update(fieldContent, fieldName);
+  }
 
   // ensures that the focus is on the input when it's rendered. 
   useEffect(() => {

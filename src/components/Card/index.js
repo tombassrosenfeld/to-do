@@ -2,32 +2,39 @@ import React, { useCallback, memo } from 'react';
 import FieldEditor from '../FieldEditor';
 import { useDispatch } from 'react-redux';
 // import { cardUpdate } from '../../data/actions/state';
-import { postCard } from '../../data/actions/api';
+import { putCard } from '../../data/actions/api';
 
 
 const Card = memo(({ card, listID }) => {
-	const { id: cardID, title, content } = card;
+	const { title, description } = card;
 
 	const dispatch = useDispatch();
+	
+	const handleCardUpdate = useCallback((content, fieldName) => {
 
-	const dispatchCardUpdate = useCallback((fieldName, content) => 
-		dispatch( postCard(cardID, fieldName, content, listID) ),
-		[dispatch, cardID, listID]
-	);
+		card[fieldName] = content;
+		console.log(card[fieldName]);
+		const dispatchUpdateCard = () => {
+			const data = {...card, listID };
+			console.log(data);
+			dispatch( putCard(data), [card, listID])
+		};
+		dispatchUpdateCard();
+	}, [dispatch,	card, listID]);
 
-	return console.log("updated") || (
+	return (
 		<div className="card container">
 			<FieldEditor
 				content={ title }
 				element="h3"
 				fieldName="title"
-				update={ dispatchCardUpdate }/>
+				update={ handleCardUpdate }/>
 
 			<FieldEditor 
-				content={ content }
-				fieldName="content"
+				content={ description }
+				fieldName="description"
 				element="p"
-				update={ dispatchCardUpdate }/>
+				update={ handleCardUpdate }/>
 		</div>
 	);
 });

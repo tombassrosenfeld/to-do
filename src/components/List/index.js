@@ -15,14 +15,15 @@ const List = memo(({ list }) => {
 
 	const dispatch = useDispatch();
 
-	const dispatchAddCard = (data) => dispatch( postCard(data), [dispatch] );
-
-	let handleAddCard = useCallback((title) => {
+	
+	const handleAddCard = useCallback((title) => {
+		const dispatchAddCard = (data) => dispatch( postCard(data), [dispatch] );
 		
 		if ( title ) {
 			let temp_id = new Date().getTime();
 			let order = cards.length + 1;
 			
+			//setting cards in local state 
 			setAllCards( (allCards) => allCards = { 
 				...allCards, 
 				[temp_id]: { 
@@ -33,6 +34,7 @@ const List = memo(({ list }) => {
 			})
 			setCards( cards =>  cards = [ ...cards, temp_id ] );
 
+			// dispatch api request to add card
 			dispatchAddCard({ title, order, listID });
 		}
 	}, [listID, cards, dispatch]);
